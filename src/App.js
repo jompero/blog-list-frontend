@@ -3,11 +3,9 @@ import React, { useEffect, useState } from 'react'
 import './App.css'
 import blogsService from './services/blogs'
 import Login from './components/Login'
-import BlogForm from './components/BlogForm'
 import SnackBar from './components/Snackbar'
 import Blogs from './components/Blogs'
 import Submit from './components/Submit'
-import Toggleable from './components/Toggleable'
 
 function App() {
 	const [user, setUser] = useState(null)
@@ -49,7 +47,7 @@ function App() {
 	return (
 		<div className="App">
 			<h1>Bloglist</h1>
-			{user === null 
+			{user === null
 				? loginForm()
 				: loggedIn()}
 			{message.label && snackBar()}

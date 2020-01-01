@@ -4,7 +4,7 @@ import React from 'react'
 const Snackbar = (props) => {
 	const { label } = props
 	const { type } = props
-    
+
 	const containerColor = () => {
 		switch(type) {
 		case 'danger': return 'red'

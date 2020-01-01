@@ -20,7 +20,7 @@ const InputField = (props) => {
 
 		},
 		input: {
-      
+
 		}
 	}
 

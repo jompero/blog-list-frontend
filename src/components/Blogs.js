@@ -22,11 +22,11 @@ const Blogs = ({ user, logger }) => {
 	}, [])
 
 	const onLike = (likedBlog) => {
-		let updatedBlogs = blogs.map((blog) => blog.id === likedBlog.id 
+		let updatedBlogs = blogs.map((blog) => blog.id === likedBlog.id
 			? likedBlog
 			: blog)
 		setBlogs(sort(updatedBlogs))
-	} 
+	}
 
 	const appendBlog = (blog) => {
 		blog.user=user
@@ -40,7 +40,7 @@ const Blogs = ({ user, logger }) => {
 
 	const blogsList = () => {
 		if (!blogs) return ''
-		
+
 		return blogs.map(blog => {
 			return (
 				<Blog key={blog.id} blog={blog} user={user} handleLike={onLike} handleRemove={removeBlog}/>
@@ -50,7 +50,7 @@ const Blogs = ({ user, logger }) => {
 
 	const blogForm = () => {
 		if (!user) return ''
-		return (			
+		return (
 			<Toggleable showLabel="Post new blog" hideLabel="Cancel">
 				<BlogForm user={user} logger={logger} onBlogCreated={appendBlog}/>
 			</Toggleable>

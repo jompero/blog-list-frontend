@@ -6,7 +6,7 @@ import Submit from './Submit'
 import loginService from '../services/login'
 import blogService from '../services/blogs'
 
-const Login = ({onUserLoggedIn, logger}) => {
+const Login = ({ onUserLoggedIn, logger }) => {
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
 
@@ -27,7 +27,7 @@ const Login = ({onUserLoggedIn, logger}) => {
 
 			window.localStorage.setItem(
 				'loggedBloglistUser', JSON.stringify(user)
-			) 
+			)
 			blogService.setToken(user.token)
 			setUsername('')
 			setPassword('')
@@ -43,7 +43,7 @@ const Login = ({onUserLoggedIn, logger}) => {
 
 		}
 	}
-    
+
 	return (
 		<div styles={styles.container}>
 			<h2>Login</h2>
