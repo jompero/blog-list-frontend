@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import InputField from './InputField'
 import Submit from './Submit'
 import loginService from '../services/login'
@@ -53,6 +54,11 @@ const Login = ({onUserLoggedIn, logger}) => {
 			</form>
 		</div>
 	)
+}
+
+Login.propTypes = {
+	onUserLoggedIn: PropTypes.func.isRequired,
+	logger: PropTypes.func.isRequired,
 }
 
 export default Login
