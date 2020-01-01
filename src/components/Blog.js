@@ -55,13 +55,15 @@ const Blog = (props) => {
 	}
 
 	return (
-		<div style={styles.container}>
-			<div onClick={toggleContent}>{blog.title} {blog.author}</div>
+		<div className='blog' style={styles.container}>
+			<div onClick={toggleContent}>{blog.title}, {blog.author}</div>
 			<Toggleable ref={blogFormRef}>
-				<a href={blog.url}>{blog.url}</a>
-				<p>{blog.likes} likes <Submit text='Like' handleClick={onLike} /></p>
-				<i style={styles.user}>Linked by {blog.user.username}</i>
-				{removeButton()}
+				<div>
+					<a href={blog.url}>{blog.url}</a>
+					<p>{blog.likes} likes <Submit text='Like' handleClick={onLike} /></p>
+					<i style={styles.user}>Linked by {blog.user.username}</i>
+					{removeButton()}
+				</div>
 			</Toggleable>
 		</div>
 	)

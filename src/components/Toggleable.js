@@ -34,7 +34,7 @@ const Toggleable = React.forwardRef(({ showLabel, hideLabel, children } , ref) =
 
 	return (
 		<div style={styles.container}>
-			<div style={styles.content}>{children}</div>
+			<div className='content' style={styles.content}>{children}</div>
 			<div>{visibilityButton()}</div>
 		</div>
 	)

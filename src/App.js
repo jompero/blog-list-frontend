@@ -40,6 +40,7 @@ function App() {
 	const loggedIn = () => (
 		<div>
 			<p>Logged in as {user.username}<Submit text="Log out" handleClick={logout}/></p>
+			<Blogs user={user} logger={log}/>
 		</div>
 	)
 	const snackBar = () => (<SnackBar type={message.type} label={message.label} />)
@@ -51,7 +52,6 @@ function App() {
 				? loginForm()
 				: loggedIn()}
 			{message.label && snackBar()}
-			<Blogs user={user} logger={log}/>
 		</div>
 	)
 }
