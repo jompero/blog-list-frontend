@@ -1,23 +1,23 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
-import InputField from './InputField'
 import Submit from './Submit'
 import blogsService from '../services/blogs'
+import { useField } from '../hooks'
 
 const BlogForm = ({ logger, onBlogCreated }) => {
-	const [title, setTitle] = useState('')
-	const [author, setAuthor] = useState('')
-	const [url, setUrl] = useState('')
+	const { reset: resetTitle, ...title } = useField('text')
+	const { reset: resetAuthor, ...author } = useField('text')
+	const { reset: resetUrl, ...url } = useField('text')
 
 	const onSubmitHandler = async (event) => {
 		event.preventDefault()
 		try {
 			const blog = await blogsService.create({
-				title, author, url,
+				title: title.value, author: author.value, url: url.value,
 			})
-			setTitle('')
-			setAuthor('')
-			setUrl('')
+			resetTitle()
+			resetAuthor()
+			resetUrl()
 			logger('success', `Blog ${blog.title} posted succesfully.`)
 			onBlogCreated && onBlogCreated(blog)
 		} catch (exception) {
@@ -25,15 +25,28 @@ const BlogForm = ({ logger, onBlogCreated }) => {
 		}
 	}
 
-	const onTitleChange = (value) => setTitle(value)
-	const onAuthorChange = (value) => setAuthor(value)
-	const onUrlChange = (value) => setUrl(value)
+	const styles = {
+		container: {
+			display: 'flex',
+			justifyContent: 'space-between',
+			width: '40%',
+			margin: '0.5rem'
+		},
+		form: {
+			display: 'flex',
+			flexDirection: 'column',
+			width: '40%',
+		},
+		input: {
+			height: '1.5rem'
+		}
+	}
 
 	return (
-		<form onSubmit={onSubmitHandler}>
-			<InputField label='Title' type='text' text={title} handleNewValue={onTitleChange}/>
-			<InputField label='Author' type='text' text={author} handleNewValue={onAuthorChange}/>
-			<InputField label='URL' type='text' text={url} handleNewValue={onUrlChange}/>
+		<form onSubmit={onSubmitHandler} style={styles.form}>
+			<label>Title</label><input {...title} style={styles.input} />
+			<label>Author</label><input {...author} style={styles.input} />
+			<label>URL</label><input {...url} style={styles.input} />
 			<Submit text='Submit' />
 		</form>
 	)

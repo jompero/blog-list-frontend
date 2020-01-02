@@ -43,7 +43,7 @@ const Blogs = ({ user, logger }) => {
 
 		return blogs.map(blog => {
 			return (
-				<Blog key={blog.id} blog={blog} user={user} handleLike={onLike} handleRemove={removeBlog}/>
+				<Blog key={blog.id} blog={blog} user={user} handleLike={onLike} handleRemove={removeBlog} logger={logger}/>
 			)
 		})
 	}

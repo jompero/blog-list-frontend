@@ -5,6 +5,7 @@ import Submit from './Submit'
 import blogService from '../services/blogs'
 
 const Blog = (props) => {
+	const { logger } = props
 	const [blog, setBlog] = useState(props.blog)
 	// console.log(blog)
 
@@ -20,8 +21,10 @@ const Blog = (props) => {
 			// console.log(likedBlog)
 			setBlog(likedBlog)
 			props.handleLike(likedBlog)
+			logger('success', `Liked ${blog.title}! :)`)
 		} catch(exception) {
 			// console.log(exception)
+			logger('danger', 'Error occured while liking... :(')
 		}
 	}
 
@@ -29,8 +32,10 @@ const Blog = (props) => {
 		try {
 			const removedBlog = await blogService.remove(blog)
 			props.handleRemove(blog)
+			logger('success', `Blog ${blog.title} removed!`)
 		} catch(exception) {
 			// console.log(exception)
+			logger('danger', 'Error occured while removing...')
 		}
 	}
 

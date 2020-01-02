@@ -21,7 +21,8 @@ module.exports = {
 	},
 	'plugins': [
 		'react',
-		'jest'
+		'jest',
+		"react-hooks"
 	],
 	'rules': {
 		'indent': [
@@ -49,7 +50,8 @@ module.exports = {
 			"error", { "before": true, "after": true }
 		],
 		"no-console": 0,
-		"react/prop-types": 0
+		"react/prop-types": 0,
+		"react-hooks/rules-of-hooks": "error",
 	},
 	
 }
